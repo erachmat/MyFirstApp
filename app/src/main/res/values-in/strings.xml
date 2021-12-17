@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">Aplikasi Pertamaku</string>
+    <string name="edit_message">Masukkan sebuah pesan</string>
+    <string name="button_send">Kirim</string>
+
+    <string name="full_name">Nama Lengkap</string>
+    <string name="email_address">Alamat Email</string>
+    <string name="phone_number">No.Telepon</string>
+    <string name="password">Kata Sandi</string>
+    <string name="save">Simpan</string>
+    <string name="text_agreement">Saya Setuju</string>
+    <string name="text_info">Silahkan isi form berikut</string>
+    <string name="menu_konteks">Menu Konteks</string>
+    <string name="custom_listview">ListView Kustom</string>
+    <string name="listview">ListView</string>
+    <string name="form_register">Form Pendaftaran</string>
+    <string name="register">Pendaftaran</string>
+    <string name="custom_list">Daftar Kustom</string>
+    <string name="photos">Foto</string>
+    <string name="list_photos">Daftar Foto</string>
+
+</resources>
