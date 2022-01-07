@@ -168,4 +168,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailUserActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Dipanggil ketika user mengetuk tombol login Form
+     */
+    public void showLoginForm(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

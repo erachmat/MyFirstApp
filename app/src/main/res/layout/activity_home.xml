@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_15sdp"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/purple_700"/>
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:textSize="@dimen/_14ssp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/purple_700"/>
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:textSize="@dimen/_14ssp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Key"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/purple_700"/>
+
+    <TextView
+        android:id="@+id/txtKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Key"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:textSize="@dimen/_14ssp"/>
+
+</LinearLayout>
