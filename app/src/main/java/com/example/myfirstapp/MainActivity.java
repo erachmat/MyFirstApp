@@ -15,10 +15,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myfirstapp.Model.Cuaca;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceIdReceiver;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -175,5 +184,95 @@ public class MainActivity extends AppCompatActivity {
     public void showLoginForm(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Dipanggil ketika user mengetuk tombol weather
+     */
+    public void showWeather(View view) {
+
+        OkHttpClient httpClient = new OkHttpClient();
+
+        // URL endpoint tempat penyimpanan file login.php
+        String url = "http://api.openweathermap.org/data/2.5/weather?" +
+                "q=Sleman&appid=920bd14cbeee3b1f961b7c53351af103";
+
+        // Membuat struktur request
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+       httpClient.newCall(request).enqueue(new Callback() {
+           @Override
+           public void onFailure(Call call, IOException e) {
+               Toast.makeText(getApplicationContext(),
+                        "Tidak dapat terhubung server", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+           }
+
+           @Override
+           public void onResponse(Call call, Response response) throws IOException {
+
+               // Merubah response body JSON menjadi
+              // file object Java namanya Cuaca
+                Gson gson = new Gson();
+                Cuaca cuaca = gson.fromJson(response.body().string(), Cuaca.class);
+
+                // Ambil data Temperatur dari API
+               // Convert menjadi satuan Celcius
+               Double suhuKelvin = cuaca.getMain().getTemp();
+               Double suhuCelcius = suhuKelvin - 273.15;
+
+               String namaKota = cuaca.getName(); // Ambil data NAMA KOTA dari API
+
+               // Ambil data KONDISI CUACA dari API
+               String kondisiCuaca = cuaca.getWeather().get(0).getDescription();
+
+               // Kirim 3 variable hasil dari JSON
+               // melalui intent menuju WeatherActivity
+               Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+               intent.putExtra("suhuCelcius", String.format("%.2f", suhuCelcius));
+               intent.putExtra("namaKota", namaKota);
+               intent.putExtra("kondisiCuaca", kondisiCuaca);
+               startActivity(intent);
+           }
+       });
+
+//        String url = "http://api.openweathermap.org/data/2.5/weather?" +
+//                "q=Sleman&appid=920bd14cbeee3b1f961b7c53351af103";
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .build();
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//                Toast.makeText(getApplicationContext(),
+//                        "Tidak dapat terhubung server", Toast.LENGTH_LONG).show();
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//                // Merubah response body JSON menjadi
+//                // file object Java namanya GsonParse
+//                Gson gson = new Gson();
+//                Cuaca cuaca = gson.fromJson(response.body().string(), Cuaca.class);
+//
+//                Double suhuKelvin = cuaca.getMain().getTemp();
+//                double suhuCelcius = suhuKelvin - 273.15;
+//
+//                // Redirect ke halaman Home
+//                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+//                intent.putExtra("SUHU", String.format("%.2f", suhuCelcius));
+//                intent.putExtra("KOTA", cuaca.getName());
+//                intent.putExtra("CUACA", cuaca.getWeather().get(0).getDescription());
+//
+//                startActivity(intent);
+//            }
+//        });
     }
 }
