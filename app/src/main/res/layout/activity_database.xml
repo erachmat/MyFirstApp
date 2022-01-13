@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".DatabaseActivity">
+
+    <TextView
+        android:text="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/textView"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold|italic"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center"
+        android:hint="Enter Name"
+        android:layout_margin="@dimen/_10sdp"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:text="@string/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/_18ssp"
+        android:gravity="center"
+        android:hint="Enter Password" />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_margin="@dimen/_10sdp"
+        android:hint="Enter Password"
+        android:gravity="center_vertical|center"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:id="@+id/btnViewData"
+        android:text="View Data"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_18ssp"
+        android:onClick="viewdata"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/btnAddUser"
+        android:text="Add User"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/_18ssp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:onClick="addUser" />
+
+</LinearLayout>

@@ -238,41 +238,13 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-//        String url = "http://api.openweathermap.org/data/2.5/weather?" +
-//                "q=Sleman&appid=920bd14cbeee3b1f961b7c53351af103";
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .build();
-//
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//                Toast.makeText(getApplicationContext(),
-//                        "Tidak dapat terhubung server", Toast.LENGTH_LONG).show();
-//                e.printStackTrace();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//                // Merubah response body JSON menjadi
-//                // file object Java namanya GsonParse
-//                Gson gson = new Gson();
-//                Cuaca cuaca = gson.fromJson(response.body().string(), Cuaca.class);
-//
-//                Double suhuKelvin = cuaca.getMain().getTemp();
-//                double suhuCelcius = suhuKelvin - 273.15;
-//
-//                // Redirect ke halaman Home
-//                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-//                intent.putExtra("SUHU", String.format("%.2f", suhuCelcius));
-//                intent.putExtra("KOTA", cuaca.getName());
-//                intent.putExtra("CUACA", cuaca.getWeather().get(0).getDescription());
-//
-//                startActivity(intent);
-//            }
-//        });
+    }
+
+    /**
+     * Dipanggil ketika user mengetuk tombol login Form
+     */
+    public void showDatabase(View view) {
+        Intent intent = new Intent(this, DatabaseActivity.class);
+        startActivity(intent);
     }
 }
