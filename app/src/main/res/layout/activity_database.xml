@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     tools:context=".DatabaseActivity">
 
     <TextView
@@ -14,20 +14,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:id="@+id/textView"
+        android:textAlignment="center"
         android:textSize="@dimen/_18ssp"
-        android:textStyle="bold|italic"
-        android:gravity="center" />
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical|center"
         android:hint="Enter Name"
         android:layout_margin="@dimen/_10sdp"
         android:inputType="textPersonName"
-        android:textSize="@dimen/_18ssp"
-        android:textStyle="bold|italic" />
+        android:textSize="@dimen/_18ssp" />
 
     <TextView
         android:text="@string/password"
@@ -36,7 +34,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:textStyle="bold|italic"
         android:textSize="@dimen/_18ssp"
-        android:gravity="center"
+
         android:hint="Enter Password" />
 
     <EditText
@@ -46,7 +44,6 @@
         android:inputType="textPassword"
         android:layout_margin="@dimen/_10sdp"
         android:hint="Enter Password"
-        android:gravity="center_vertical|center"
         android:textSize="@dimen/_18ssp"
         android:textStyle="normal|bold" />
 

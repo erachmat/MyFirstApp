@@ -10,34 +10,63 @@ import android.widget.Toast;
 public class myDbAdapter {
 
     // Deklarasikan class myDbHelper
+//    myDbHelper myhelper;
     myDbHelper myhelper;
 
-    // Buat Constructor
+    // Constructor
     public myDbAdapter(Context context) {
         myhelper = new myDbHelper(context);
     }
 
-    // Fungsi untuk memasukkan data ke dalam SQLite
+    // Digunakan untuk memasukkan value username dan password
+    // ke dalam table di SQLite
     public long insertData(String name, String pass) {
 
-        // Panggil database myDatabase
+        // Panggil DB
         SQLiteDatabase dbb = myhelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
 
-        // Masukkan variable name ke dalam Kolom NAME di database
+        // Kita gunakan untuk menyimpan nama kolom dan value yang ingin disimpan
+        ContentValues contentValues = new ContentValues();
+        // Parameter pertama adalah nama kolom table
+        // Parameter kedua adalah value yang ingin disimpan
         contentValues.put(myDbHelper.NAME, name);
-        // Masukkan variable password ke dalam Kolom MyPASSWORD di database
         contentValues.put(myDbHelper.MyPASSWORD, pass);
 
-        // Masukkan contentValues ke dalam table myTable
+        // Lakukan fungsi insert
+        // Kemudian simpan id user yang baru berhasil diinsert
         long id = dbb.insert(myDbHelper.TABLE_NAME, null , contentValues);
 
         return id;
     }
 
+
+
+//    // Buat Constructor
+//    public myDbAdapter(Context context) {
+//        myhelper = new myDbHelper(context);
+//    }
+//
+//    // Fungsi untuk memasukkan data ke dalam SQLite
+//    public long insertData(String name, String pass) {
+//
+//        // Panggil database myDatabase
+//        SQLiteDatabase dbb = myhelper.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//
+//        // Masukkan variable name ke dalam Kolom NAME di database
+//        contentValues.put(myDbHelper.NAME, name);
+//        // Masukkan variable password ke dalam Kolom MyPASSWORD di database
+//        contentValues.put(myDbHelper.MyPASSWORD, pass);
+//
+//        // Masukkan contentValues ke dalam table myTable
+//        long id = dbb.insert(myDbHelper.TABLE_NAME, null , contentValues);
+//
+//        return id;
+//    }
+
     public String getData() {
 
-        // Panggil database myDatabase
+        // Panggil database dengan nama myDatabase
         SQLiteDatabase db = myhelper.getWritableDatabase();
 
         // Panggil 3 kolom berikut
@@ -59,7 +88,7 @@ public class myDbAdapter {
             // Ambil data NAME
             String name = cursor.getString(cursor.getColumnIndex(myDbHelper.NAME));
             // Ambil data PASSWORD
-            String  password = cursor.getString(cursor.getColumnIndex(myDbHelper.MyPASSWORD));
+            String password = cursor.getString(cursor.getColumnIndex(myDbHelper.MyPASSWORD));
 
             // Buat struktur string outputnya
             buffer.append(cid + "   " + name + "   " + password +" \n");
@@ -69,6 +98,7 @@ public class myDbAdapter {
     }
 
     // Konfigurasi SQLite
+    // implementasi dari class SQLiteOpenHelper
     static class myDbHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "myDatabase";    // Database Name
@@ -88,7 +118,6 @@ public class myDbAdapter {
         }
 
         public void onCreate(SQLiteDatabase db) {
-
             try {
                 db.execSQL(CREATE_TABLE);
             } catch (Exception e) {

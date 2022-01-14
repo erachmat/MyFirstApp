@@ -31,7 +31,7 @@ public class DatabaseActivity extends AppCompatActivity {
         helper = new myDbAdapter(this);
     }
 
-    // Fungsi yang digunakan untuk mengambil data username dan password
+    // Method yang digunakan untuk mengambil data username dan password
     // dari Form layout untuk dimasukkan ke dalam database SQLite
     public void addUser(View view) {
 
@@ -41,15 +41,17 @@ public class DatabaseActivity extends AppCompatActivity {
 
         // digunakan untuk memvalidasi apakah t1
         // atau t2 itu valuenya kosong atau tidak
-        if(t1.isEmpty() || t2.isEmpty()) {
+        if (t1.isEmpty() || t2.isEmpty()) {
 
+            // Pesan peringatan
             Toast.makeText(getApplicationContext(),"Enter Both Name and Password",
                     Toast.LENGTH_LONG).show();
         }
         else {
 
             // Panggil fungsi insertData dari class myDbAdapter
-            long id = helper.insertData(t1,t2);
+            // Masukkan t1 dan t2 sebagai parameter
+            long id = helper.insertData(t1, t2);
 
             // validasi apakah datanya berhasil tersimpan ke dalam SQlite
             if(id <= 0) {
@@ -60,6 +62,8 @@ public class DatabaseActivity extends AppCompatActivity {
             }
             else {
 
+                // Pesan pemberitahuan bahwa data user berhasil
+                // di simpan ke dalam table
                 Toast.makeText(getApplicationContext(),"Insertion Successful",
                         Toast.LENGTH_LONG).show();
 
@@ -70,6 +74,8 @@ public class DatabaseActivity extends AppCompatActivity {
         }
     }
 
+    // Method digunakan untuk menampilkan semua
+    // data user dari table di SQLite
     public void viewdata(View view) {
 
         // Panggil fungsi getData dari class myDbAdapter
